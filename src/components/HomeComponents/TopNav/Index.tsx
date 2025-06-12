@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Container from "../../CommonComponets/Container";
 import { icons } from "../../../helpers/IconsProver";
 const TopNav = () => {
@@ -38,4 +38,4 @@ const TopNav = () => {
   );
 };
 
-export default TopNav;
+export default React.memo(TopNav) || TopNav;

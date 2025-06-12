@@ -10,6 +10,8 @@ import {
   FaReddit,
   FaInstagramSquare,
   FaRegHeart,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline, IoHelpCircleOutline } from "react-icons/io5";
@@ -40,4 +42,6 @@ export const icons: Icons = {
   help: <IoHelpCircleOutline />,
   call: <BsTelephonePlusFill />,
   arrow: <MdOutlineArrowRightAlt />,
+  down: <FaChevronDown />,
+  up: <FaChevronUp />,
 };

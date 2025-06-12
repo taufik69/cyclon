@@ -8,4 +8,4 @@ const Search: React.FC<propTypes> = ({ children, className }) => {
   return <div className={className}>{children}</div>;
 };
 
-export default Search;
+export default React.memo(Search) || Search;

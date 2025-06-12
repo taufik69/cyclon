@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "../../CommonComponets/Container";
 import { assets } from "../../../helpers/AssetProvider";
 import Search from "../../CommonComponets/Search";
@@ -45,4 +45,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default React.memo(Menu) || Menu;
