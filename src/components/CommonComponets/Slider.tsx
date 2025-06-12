@@ -6,8 +6,6 @@ import {
   Pagination,
   Scrollbar,
   A11y,
-  EffectCube,
-  EffectFade,
   EffectFlip,
 } from "swiper/modules";
 // @ts-ignore
@@ -27,15 +25,7 @@ const TestSwiper: React.FC = () => {
     <div className="max-w-3xl mx-auto my-10!">
       <Swiper
         // install Swiper modules
-        modules={[
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          EffectCube,
-          EffectFade,
-          EffectFlip,
-        ]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFlip]}
         effect="flip"
         spaceBetween={50}
         slidesPerView={1}

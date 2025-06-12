@@ -407,4 +407,12 @@ a {
   font-weight: 600;
   line-height: 11px;
 }
+
+.swiper-pagination-bullet {
+  background: #0d478e !important; /* normal dot color */
+}
+.swiper-pagination-bullet-active {
+  background: #fa8232 !important; /* active dot color */
+}
+
 /* ========= body component =============*/
