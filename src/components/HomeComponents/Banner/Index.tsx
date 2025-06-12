@@ -2,7 +2,14 @@ import React from "react";
 import Container from "../../CommonComponets/Container";
 import { assets } from "../../../helpers/AssetProvider";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+
+// Swiper core styles
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// import "swiper/css/scrollbar";
+
 const Banner = () => {
   return (
     <div className="py-10!">
@@ -10,33 +17,24 @@ const Banner = () => {
         <div className="grid grid-cols-[2fr_1fr] gap-x-5 rounded">
           <div className="rounded">
             <Swiper
-              spaceBetween={50}
+              modules={[Navigation, Pagination, Scrollbar]}
+              spaceBetween={30}
               slidesPerView={1}
-              onSlideChange={() => console.log("slide change")}
+              navigation
+              pagination={{ clickable: true }}
+              onSlideChange={() => console.log("Slide changed")}
               onSwiper={(swiper) => console.log(swiper)}
+              loop={true}
             >
-              <SwiperSlide>
-                <img
-                  src={assets.bannerOne}
-                  alt={"BANNER"}
-                  className="w-full h-full  object-cover rounded"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src={assets.bannerOne}
-                  alt={"BANNER"}
-                  className="w-full h-full  object-cover rounded"
-                />
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <img
-                  src={assets.bannerOne}
-                  alt={"BANNER"}
-                  className="w-full h-full  object-cover rounded"
-                />
-              </SwiperSlide>
+              {[1, 2, 3].map((n) => (
+                <SwiperSlide key={n}>
+                  <img
+                    src={`https://via.placeholder.com/800x400?text=Slide+${n}`}
+                    alt={`Slide ${n}`}
+                    className="w-full h-64 object-cover rounded"
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
           <div className="grid grid-rows-2  gap-y-5 justify-items-stretch rounded">
