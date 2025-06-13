@@ -1,5 +1,5 @@
 // import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 
 import {
   Pagination,
@@ -9,6 +9,7 @@ import {
   EffectFlip,
   EffectCards,
   EffectCoverflow,
+  EffectFade,
 } from "swiper/modules";
 //@ts-ignore
 
@@ -39,9 +40,10 @@ const Slider: React.FC<propsType> = ({
           EffectFlip,
           EffectCards,
           EffectCoverflow,
+          EffectFade,
           ...(paginationActive ? [Pagination] : []),
         ]}
-        effect={animationStyle}
+        effect={animationStyle || "fade"}
         autoplay={{ delay: 3500, disableOnInteraction: false }} // Enable autoplay
         spaceBetween={50}
         slidesPerView={1}
