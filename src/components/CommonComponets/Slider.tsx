@@ -1,70 +1,62 @@
+// import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import {
+  Pagination,
+  A11y,
+  EffectCube,
+  Autoplay,
+  EffectFlip,
+  EffectCards,
+  EffectCoverflow,
+} from "swiper/modules";
+//@ts-ignore
+
+import "swiper/css";
+//@ts-ignore
+import "swiper/css/navigation";
+//@ts-ignore
+import "swiper/css/pagination";
 import React from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  EffectFlip,
-} from "swiper/modules";
-// @ts-ignore
-import "swiper/css";
-// @ts-ignore
-import "swiper/css/navigation";
-// @ts-ignore
-import "swiper/css/pagination";
-// @ts-ignore
-import "swiper/css/scrollbar";
-//@ts-ignore
-import "swiper/css/bundle";
-import { assets } from "../../helpers/AssetProvider";
-
-const TestSwiper: React.FC = () => {
+interface propsType {
+  children: React.ReactNode;
+  animationStyle: string;
+  paginationActive: boolean;
+}
+const Slider: React.FC<propsType> = ({
+  children,
+  animationStyle = "cube",
+  paginationActive,
+}) => {
   return (
-    <div className="max-w-3xl mx-auto my-10!">
+    <div>
       <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFlip]}
-        effect="flip"
+        modules={[
+          A11y,
+          EffectCube,
+          Autoplay,
+          EffectFlip,
+          EffectCards,
+          EffectCoverflow,
+          ...(paginationActive ? [Pagination] : []),
+        ]}
+        effect={animationStyle}
+        autoplay={{ delay: 3500, disableOnInteraction: false }} // Enable autoplay
         spaceBetween={50}
         slidesPerView={1}
-        navigation={{
-          nextEl: ".next",
-          prevEl: ".prev",
-        }}
+        grabCursor={true}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {[1, 2, 3, 4, 5].map((n) => (
-          <SwiperSlide key={n}>
-            <div>
-              <img
-                src={assets.bannerOne}
-                alt={"BANNER"}
-                className="w-full h-full  object-cover rounded"
-              />
-            </div>
-          </SwiperSlide>
+        {[1, 2, 3, 3, 5].map((item) => (
+          <SwiperSlide key={item}>{children}</SwiperSlide>
         ))}
       </Swiper>
-      {/* Custom arrows */}
-      <button
-        className="next absolute left-2 top-1/2 -translate-y-1/2 bg-white text-gray-900 rounded-full shadow p-2 z-10"
-        type="button"
-      >
-        Prev
-      </button>
-      <button
-        className="prev absolute right-2 top-1/2 -translate-y-1/2 bg-white text-gray-900 rounded-full shadow p-2 z-10"
-        type="button"
-      >
-        Next
-      </button>
     </div>
   );
 };
 
-export default TestSwiper;
+export default React.memo(Slider);

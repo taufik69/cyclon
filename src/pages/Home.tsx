@@ -2,8 +2,9 @@ import Header from "../components/HomeComponents/Header/Index";
 import Menu from "../components/HomeComponents/Menu/Index";
 import TopNav from "../components/HomeComponents/TopNav/Index";
 import Category from "../components/HomeComponents/Category/Index";
-// import Banner from "../components/HomeComponents/Banner/Index";
-import Slider from "../components/CommonComponets/Slider";
+import Banner from "../components/HomeComponents/Banner/Index";
+import Features from "../components/HomeComponents/Features/Index";
+
 const Home = () => {
   return (
     <div>
@@ -13,8 +14,12 @@ const Home = () => {
       <div className="shadow">
         <Category />
       </div>
-      {/* <Banner /> */}
-      <Slider />
+      <div className="mb-20!">
+        <Banner />
+      </div>
+      <div className="mt-20!">
+        <Features />
+      </div>
     </div>
   );
 };

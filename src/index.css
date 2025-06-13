@@ -408,11 +408,21 @@ a {
   line-height: 11px;
 }
 
-.swiper-pagination-bullet {
-  background: #0d478e !important; /* normal dot color */
+/* ========= body component =============*/
+
+/* swiper css overWrite*/
+.swiper-pagination {
+  position: absolute !important;
+  left: -41% !important;
+  bottom: 47% !important;
 }
-.swiper-pagination-bullet-active {
-  background: #fa8232 !important; /* active dot color */
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: var(--color-gray-500) !important;
 }
 
-/* ========= body component =============*/
+.swiper-pagination-bullet-active {
+  background-color: var(--color-gray-900) !important;
+}

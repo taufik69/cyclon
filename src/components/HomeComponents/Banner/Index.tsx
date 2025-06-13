@@ -1,56 +1,43 @@
-import React from "react";
+// import React from "react";
 import Container from "../../CommonComponets/Container";
 import { assets } from "../../../helpers/AssetProvider";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
-
-// Swiper core styles
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/scrollbar";
+import Slider from "../../CommonComponets/Slider";
+import React from "react";
 
 const Banner = () => {
   return (
     <div className="py-10!">
       <Container>
         <div className="grid grid-cols-[2fr_1fr] gap-x-5 rounded">
-          <div className="rounded">
-            <Swiper
-              modules={[Navigation, Pagination, Scrollbar]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              onSlideChange={() => console.log("Slide changed")}
-              onSwiper={(swiper) => console.log(swiper)}
-              loop={true}
-            >
-              {[1, 2, 3].map((n) => (
-                <SwiperSlide key={n}>
-                  <img
-                    src={`https://via.placeholder.com/800x400?text=Slide+${n}`}
-                    alt={`Slide ${n}`}
-                    className="w-full h-64 object-cover rounded"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          <div className="w-[1000px] h-[500px]">
+            <Slider animationStyle="cube" paginationActive={true}>
+              <img
+                src={assets.bannerOne}
+                alt="bannerOne"
+                className="w-full h-full object-cover rounded"
+              />
+            </Slider>
           </div>
-          <div className="grid grid-rows-2  gap-y-5 justify-items-stretch rounded">
-            <div className="bg-blue-900 rounded">
-              <img
-                src={assets.bannertwo}
-                alt="bannerTwo"
-                className="w-full h-full object-cover"
-              />
+          <div className="grid grid-rows-2  gap-y-16 justify-items-stretch rounded">
+            <div className=" w-[500px] rounded h-[250px]">
+              <Slider animationStyle="cards" paginationActive={false}>
+                <img
+                  src={assets.bannertwo}
+                  alt="bannerTwo"
+                  className="w-full h-full object-cover"
+                />
+              </Slider>
             </div>
-            <div className=" rounded">
-              <img
-                src={assets.bannerThree}
-                alt="bannerThree"
-                className="w-full h-full object-cover"
-              />
+            <div className="rounded">
+              <div className="w-[500px] rounded h-[250px]">
+                <Slider animationStyle="coverflow" paginationActive={false}>
+                  <img
+                    src={assets.bannerThree}
+                    alt="bannerTwo"
+                    className="w-full h-full object-cover"
+                  />
+                </Slider>
+              </div>
             </div>
           </div>
         </div>
@@ -59,4 +46,4 @@ const Banner = () => {
   );
 };
 
-export default React.memo(Banner) || Banner;
+export default React.memo(Banner);

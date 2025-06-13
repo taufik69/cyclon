@@ -3,14 +3,14 @@ import Mainlogo from "../assets/homepageAssets/Logo.png";
 import bannerOne from "../assets/homepageAssets/bannerSlider.png";
 import bannertwo from "../assets/homepageAssets/bannerSlider2.png";
 import bannerThree from "../assets/homepageAssets/bannerSlider3.png";
+import creditCart from "../assets/homepageAssets/CreditCard.png";
+import haedphone from "../assets/homepageAssets/Headphones.png";
+import pakage from "../assets/homepageAssets/Package.png";
+import Tropy from "../assets/homepageAssets/Trophy.png";
 
 // type declaration
 type Assets = {
-  headerlogo: string;
-  logo: string;
-  bannerOne: string;
-  bannertwo: string;
-  bannerThree: string;
+  [key: string]: string;
 };
 
 export const assets: Assets = {
@@ -19,4 +19,8 @@ export const assets: Assets = {
   bannerOne,
   bannertwo,
   bannerThree,
+  creditCart,
+  haedphone,
+  pakage,
+  Tropy,
 };
