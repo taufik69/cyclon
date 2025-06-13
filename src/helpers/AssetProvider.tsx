@@ -7,6 +7,7 @@ import creditCart from "../assets/homepageAssets/CreditCard.png";
 import haedphone from "../assets/homepageAssets/Headphones.png";
 import pakage from "../assets/homepageAssets/Package.png";
 import Tropy from "../assets/homepageAssets/Trophy.png";
+import categoryOne from "../assets/homepageAssets/categroy1.png";
 
 // type declaration
 type Assets = {
@@ -23,4 +24,5 @@ export const assets: Assets = {
   haedphone,
   pakage,
   Tropy,
+  categoryOne,
 };

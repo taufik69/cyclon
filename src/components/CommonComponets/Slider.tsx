@@ -51,9 +51,7 @@ const Slider: React.FC<propsType> = ({
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {[1, 2, 3, 3, 5].map((item) => (
-          <SwiperSlide key={item}>{children}</SwiperSlide>
-        ))}
+        {children}
       </Swiper>
     </div>
   );
