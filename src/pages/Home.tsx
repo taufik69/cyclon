@@ -22,7 +22,9 @@ const Home = () => {
         <Features />
       </div>
       <ShopByCategory />
-      <FeaturesProduct />
+      <div className="mt-10!">
+        <FeaturesProduct />
+      </div>
     </div>
   );
 };
