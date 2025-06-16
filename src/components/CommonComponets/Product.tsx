@@ -3,19 +3,33 @@ import { assets } from "../../helpers/AssetProvider";
 import { icons } from "../../helpers/IconsProver";
 import ProductSkeleton from "../Skeletion/ProductSkeletion";
 import type { productDataType } from "../../types/productapidata";
+import { Discount } from "../../helpers/Discount";
+import { log } from "console";
+import Star from "./Star";
+import FeatureProductError from "../../Error/FeatrureProductError";
 
 type featureProductProp = {
-  status: { isPending: boolean; isError: boolean; data: any; error: any };
+  status: {
+    isPending: boolean;
+    isError: boolean;
+    data: any;
+    error: any;
+    refetch: () => void;
+  };
 };
 const Product: React.FC<featureProductProp> = ({ status }) => {
-  console.log(status.data);
   if (status.isPending) {
     return <ProductSkeleton />;
+  }
+  if (status.isError) {
+    return (
+      <FeatureProductError message={status.error} onRetry={status.refetch} />
+    );
   }
 
   return (
     <div className="h-full grid grid-cols-4 gap-4">
-      {status.data.products.slice(0, 8).map((item: productDataType) => (
+      {status?.data?.products?.slice(0, 8).map((item: productDataType) => (
         <div className="max-w-[300px] p-4!  border border-gray-100 rounded relative shadow">
           <div className="flex items-center justify-center">
             <img
@@ -28,11 +42,9 @@ const Product: React.FC<featureProductProp> = ({ status }) => {
             {/* rating */}
             <div className="flex items-center gap-x-2">
               <div>
-                {[1, 2, 3, 4].map(() => (
-                  <span className="text-primary-500">{icons.fullStar}</span>
-                ))}
+                <Star rating={item.rating} />
               </div>
-              <span className="text-gray-500  body-tiny-600">
+              <span className="text-gray-500  body-xl-300">
                 ({item.reviews.length})
               </span>
             </div>
@@ -47,17 +59,34 @@ const Product: React.FC<featureProductProp> = ({ status }) => {
             {/* price */}
             <div className=" flex items-center gap-x-2">
               <span className="line-through text-gray-400 body-large-600">
-                ৳ 1,999
+                ৳ {Discount(item.price, item.discountPercentage).toFixed(2)}
               </span>
-              <span className="text-secondary-500 body-large-600">৳ 2,999</span>
+              <span className="text-secondary-500 body-large-600">
+                ৳ {item.price}
+              </span>
             </div>
           </div>
 
           {/* hotDeal */}
           <div>
-            <p className="absolute top-2 left-2 bg-secondary-500 body-tiny-600 text-gray-00 py-2! px-2! rounded">
-              {"BEST DEALS"}
-            </p>
+            {item.discountPercentage > 0 && (
+              <p className="absolute top-2 left-2 bg-warning-400 body-small-600 text-gray-900 py-2! px-2! rounded">
+                {Math.round(item.discountPercentage)}% OFF
+              </p>
+            )}
+            {item.stock >= 50 ? (
+              <p className="absolute top-2 right-2 bg-danger-500 body-small-600 text-gray-00 py-2! px-2! rounded">
+                {"BEST DEAL"}
+              </p>
+            ) : item.stock <= 10 ? (
+              <p className="absolute top-2 right-2 bg-success-500 body-small-600 text-gray-00 py-2! px-2! rounded">
+                {"SALE"}
+              </p>
+            ) : (
+              <p className="absolute top-2 right-2 bg-success-500 body-small-600 text-gray-00 py-2! px-2! rounded">
+                {"NEW"}
+              </p>
+            )}
           </div>
         </div>
       ))}

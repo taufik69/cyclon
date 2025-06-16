@@ -37,3 +37,10 @@ export type productDataType = {
   images: string[];
   thumbnail: string;
 };
+
+export type fullApiType = {
+  products: productDataType[];
+  total: number;
+  skip: number;
+  limit: number;
+};
