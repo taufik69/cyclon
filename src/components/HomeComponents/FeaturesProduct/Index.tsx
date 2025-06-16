@@ -4,6 +4,8 @@ import Container from "../../CommonComponets/Container";
 import type { featureProduct } from "../../../types/featuresProduct";
 import { icons } from "../../../helpers/IconsProver";
 import Product from "../../CommonComponets/Product";
+import { useQuery } from "@tanstack/react-query";
+import { GetFeaturesProduct } from "../../../api/FeaturesProduct";
 
 const FeaturesProduct: React.FC = () => {
   const [featuresProductList] = useState<featureProduct[]>([
@@ -33,17 +35,23 @@ const FeaturesProduct: React.FC = () => {
       slug: "tv",
     },
   ]);
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["featureProduct"],
+    queryFn: GetFeaturesProduct,
+  });
+
   return (
     <Container>
-      <div className="grid grid-cols-[1fr_4fr] max-h-full gap-x-6">
-        <div>
+      <div className="grid grid-cols-[1fr_4fr] h-[716px] gap-x-6">
+        <div className="h-full">
           <img
             src={assets.featureProductLeft}
             alt="featureproduct Left"
-            className="h-full object-cover rounded"
+            className="h-full w-full object-cover rounded"
           />
         </div>
-        <div className="grid grid-rows-[8%90%] rounded! justify-between">
+        <div className="grid grid-rows-[8%90%] rounded! h-full">
           <div className="grid grid-cols-[1fr_1fr]">
             <h1 className="heading3 text-gray-900">Featured Products</h1>
             <div className="justify-self-end">
@@ -67,10 +75,15 @@ const FeaturesProduct: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4">
-            {[...new Array(8)].map((_, index) => (
-              <Product key={index} />
-            ))}
+          <div>
+            <Product
+              status={{
+                isPending,
+                isError,
+                data: { products: data?.products },
+                error,
+              }}
+            />
           </div>
         </div>
       </div>
