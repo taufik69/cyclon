@@ -4,6 +4,9 @@ import {
   FaYoutube,
   FaCartShopping,
   FaUserAstronaut,
+  FaArrowLeft,
+  FaStar,
+  FaRegStarHalfStroke,
 } from "react-icons/fa6";
 import {
   FaPinterestP,
@@ -12,6 +15,7 @@ import {
   FaRegHeart,
   FaChevronDown,
   FaChevronUp,
+  FaRegStar,
 } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline, IoHelpCircleOutline } from "react-icons/io5";
@@ -26,6 +30,9 @@ type Icons = {
 };
 
 export const icons: Icons = {
+  emptyStart: <FaRegStar />,
+  fullStar: <FaStar />,
+  halfStar: <FaRegStarHalfStroke />,
   twitter: <FaTwitter />,
   facebook: <FaFacebook />,
   pinterest: <FaPinterestP />,
@@ -44,4 +51,5 @@ export const icons: Icons = {
   arrow: <MdOutlineArrowRightAlt />,
   down: <FaChevronDown />,
   up: <FaChevronUp />,
+  longArrow: <FaArrowLeft />,
 };

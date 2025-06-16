@@ -13,6 +13,8 @@ import categoryThree from "../assets/homepageAssets/c3.png";
 import categoryfour from "../assets/homepageAssets/c4.png";
 import categoryfive from "../assets/homepageAssets/c5.png";
 import categoriesix from "../assets/homepageAssets/c6.png";
+import featureProductLeft from "../assets/homepageAssets/featuresProductleft.png";
+import mobile from "../assets/homepageAssets/mobile.png";
 
 // type declaration
 type Assets = {
@@ -35,4 +37,6 @@ export const assets: Assets = {
   categoryfour,
   categoryfive,
   categoriesix,
+  featureProductLeft,
+  mobile,
 };

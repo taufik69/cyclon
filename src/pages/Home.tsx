@@ -5,6 +5,7 @@ import Category from "../components/HomeComponents/Category/Index";
 import Banner from "../components/HomeComponents/Banner/Index";
 import Features from "../components/HomeComponents/Features/Index";
 import ShopByCategory from "../components/HomeComponents/ShopByCategory/Index";
+import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index";
 const Home = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const Home = () => {
         <Features />
       </div>
       <ShopByCategory />
+      <FeaturesProduct />
     </div>
   );
 };
