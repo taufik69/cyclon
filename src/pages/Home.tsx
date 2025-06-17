@@ -6,6 +6,7 @@ import Banner from "../components/HomeComponents/Banner/Index";
 import Features from "../components/HomeComponents/Features/Index";
 import ShopByCategory from "../components/HomeComponents/ShopByCategory/Index";
 import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index";
+import { motion } from "framer-motion";
 const Home = () => {
   return (
     <div>

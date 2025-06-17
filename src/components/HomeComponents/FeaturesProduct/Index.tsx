@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { assets } from "../../../helpers/AssetProvider";
 import Container from "../../CommonComponets/Container";
 import { icons } from "../../../helpers/IconsProver";
@@ -6,10 +6,23 @@ import Product from "../../CommonComponets/Product";
 import { useQuery } from "@tanstack/react-query";
 import { GetFeaturesProduct } from "../../../api/FeaturesProduct";
 import { categoryWiseData, getCategoryData } from "../../../api/Category";
+import { motion, useAnimation, useInView } from "motion/react";
 
 const FeaturesProduct: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.4 });
+  const animationControl = useAnimation();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
+  useEffect(() => {
+    if (inView) {
+      animationControl.start({
+        opacity: 1,
+        transform: "translateX(0)",
+        transition: { duration: 0.8, delay: 0.2 },
+      });
+    }
+  }, [inView]);
   /**
    * @description get features product
    * @returns {isPending, isError, data, error}
@@ -59,13 +72,18 @@ const FeaturesProduct: React.FC = () => {
   return (
     <Container>
       <div className="grid grid-cols-[1fr_4fr] h-[716px] gap-x-6">
-        <div className="h-full">
+        <motion.div
+          initial={{ opacity: 0, transform: "translateX(-100%)" }}
+          animate={animationControl}
+          ref={ref}
+          className="h-full"
+        >
           <img
             src={assets.featureProductLeft}
             alt="featureproduct Left"
             className="h-full w-full object-cover rounded"
           />
-        </div>
+        </motion.div>
         <div className="grid grid-rows-[8%90%] rounded! h-full">
           <div className="grid grid-cols-[1fr_4fr]  ">
             <h1 className="heading3 text-gray-900">Featured Products</h1>
