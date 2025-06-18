@@ -15,6 +15,8 @@ import categoryfive from "../assets/homepageAssets/c5.png";
 import categoriesix from "../assets/homepageAssets/c6.png";
 import featureProductLeft from "../assets/homepageAssets/featuresProductleft.png";
 import mobile from "../assets/homepageAssets/mobile.png";
+import arrival1 from "../assets/homepageAssets/hotDeal.png";
+import arrival2 from "../assets/homepageAssets/hotdeal2.png";
 
 // type declaration
 type Assets = {
@@ -24,6 +26,8 @@ type Assets = {
 export const assets: Assets = {
   headerlogo: logo,
   logo: Mainlogo,
+  arrival1,
+  arrival2,
   bannerOne,
   bannertwo,
   bannerThree,

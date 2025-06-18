@@ -6,7 +6,7 @@ import Banner from "../components/HomeComponents/Banner/Index";
 import Features from "../components/HomeComponents/Features/Index";
 import ShopByCategory from "../components/HomeComponents/ShopByCategory/Index";
 import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index";
-import { motion } from "framer-motion";
+import Arrival from "../components/HomeComponents/Arrival/Index";
 const Home = () => {
   return (
     <div>
@@ -26,6 +26,7 @@ const Home = () => {
       <div className="mt-10!">
         <FeaturesProduct />
       </div>
+      <Arrival />
     </div>
   );
 };
