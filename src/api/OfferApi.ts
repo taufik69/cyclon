@@ -1,9 +1,16 @@
 import type { fullApiType } from "../types/productapidata";
 
-export const GetFlashSaleOfferData = async (): Promise<fullApiType> => {
+type propType = {
+  limit: number;
+  skip: number;
+};
+export const GetFlashSaleOfferData = async ({
+  limit,
+  skip,
+}: propType): Promise<fullApiType> => {
   try {
     const data = await fetch(
-      "https://dummyjson.com/products?limit=3&skip=0"
+      `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
     ).then((res) => res.json());
     return data;
   } catch (error) {

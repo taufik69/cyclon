@@ -17,6 +17,7 @@ import featureProductLeft from "../assets/homepageAssets/featuresProductleft.png
 import mobile from "../assets/homepageAssets/mobile.png";
 import arrival1 from "../assets/homepageAssets/hotDeal.png";
 import arrival2 from "../assets/homepageAssets/hotdeal2.png";
+import FooterLogo from "../assets/homepageAssets/LogoofFooter.png";
 
 // type declaration
 type Assets = {
@@ -25,6 +26,7 @@ type Assets = {
 
 export const assets: Assets = {
   headerlogo: logo,
+  FooterLogo,
   logo: Mainlogo,
   arrival1,
   arrival2,
