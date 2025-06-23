@@ -7,6 +7,7 @@ import Features from "../components/HomeComponents/Features/Index";
 import ShopByCategory from "../components/HomeComponents/ShopByCategory/Index";
 import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index";
 import Arrival from "../components/HomeComponents/Arrival/Index";
+import Offers from "../components/HomeComponents/Offers/Index";
 const Home = () => {
   return (
     <div>
@@ -27,6 +28,9 @@ const Home = () => {
         <FeaturesProduct />
       </div>
       <Arrival />
+      <div>
+        <Offers />
+      </div>
     </div>
   );
 };
