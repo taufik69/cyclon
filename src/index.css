@@ -456,3 +456,28 @@ a {
 }
 
 
+/* custom thumb and scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 19px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-gray-300);
+    border-radius: 19px;
+   
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-orange-300);
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange-400);
+}
+
+
