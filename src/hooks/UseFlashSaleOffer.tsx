@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { GetFlashSaleOfferData } from "../api/OfferApi";
+import { GetFeaturesProduct } from "../api/FeaturesProduct";
 import type { queryType } from "../types/OfferData";
 
 export const useFlashSaleOffer = (): queryType => {
@@ -54,6 +55,21 @@ export const useNewArrival = (): queryType => {
   } = useQuery({
     queryKey: ["newArrival"],
     queryFn: () => GetFlashSaleOfferData({ limit: 3, skip: 9 }),
+  });
+  return { data: newArrivalData, refetch, isPending, isError, error };
+};
+
+// get a all product
+export const useGetAllProduct = (): queryType => {
+  const {
+    data: newArrivalData,
+    refetch,
+    isPending,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => GetFeaturesProduct(),
   });
   return { data: newArrivalData, refetch, isPending, isError, error };
 };

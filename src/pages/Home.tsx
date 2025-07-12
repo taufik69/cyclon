@@ -8,13 +8,11 @@ import ShopByCategory from "../components/HomeComponents/ShopByCategory/Index";
 import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index";
 import Arrival from "../components/HomeComponents/Arrival/Index";
 import Offers from "../components/HomeComponents/Offers/Index";
+import NewsLetter from "../components/HomeComponents/Newsletter/Index";
 import Footer from "../components/CommonComponets/Footer";
 const Home = () => {
   return (
     <div>
-      <Header />
-      <TopNav />
-      <Menu />
       <div className="shadow">
         <Category />
       </div>
@@ -32,7 +30,9 @@ const Home = () => {
       <div>
         <Offers />
       </div>
-      <Footer />
+      <div className="mt-20!">
+        <NewsLetter />
+      </div>
     </div>
   );
 };
