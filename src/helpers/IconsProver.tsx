@@ -23,6 +23,7 @@ import { GoGitCompare } from "react-icons/go";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { BsTelephonePlusFill } from "react-icons/bs";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
 import React from "react";
 
 type Icons = {
@@ -30,6 +31,7 @@ type Icons = {
 };
 
 export const icons: Icons = {
+  cross: <RxCross2 />,
   emptyStart: <FaRegStar />,
   fullStar: <FaStar />,
   halfStar: <FaRegStarHalfStroke />,

@@ -1,6 +1,3 @@
-import Header from "../components/HomeComponents/Header/Index";
-import Menu from "../components/HomeComponents/Menu/Index";
-import TopNav from "../components/HomeComponents/TopNav/Index";
 import Category from "../components/HomeComponents/Category/Index";
 import Banner from "../components/HomeComponents/Banner/Index";
 import Features from "../components/HomeComponents/Features/Index";
@@ -9,7 +6,7 @@ import FeaturesProduct from "../components/HomeComponents/FeaturesProduct/Index"
 import Arrival from "../components/HomeComponents/Arrival/Index";
 import Offers from "../components/HomeComponents/Offers/Index";
 import NewsLetter from "../components/HomeComponents/Newsletter/Index";
-import Footer from "../components/CommonComponets/Footer";
+
 const Home = () => {
   return (
     <div>

@@ -21,6 +21,8 @@ import FooterLogo from "../assets/homepageAssets/LogoofFooter.png";
 import android from "../assets/homepageAssets/App1.png";
 import apple from "../assets/homepageAssets/App2.png";
 import newsletter from "../assets/homepageAssets/newsletter.png";
+import singleProduct from "../assets/homepageAssets/singleProduc t.png";
+import singleProductContent from "../assets/homepageAssets/SingleProductContent.png";
 
 // type declaration
 type Assets = {
@@ -28,6 +30,8 @@ type Assets = {
 };
 
 export const assets: Assets = {
+  singleProductContent,
+  singleProduct,
   newsletter,
   android,
   apple,
