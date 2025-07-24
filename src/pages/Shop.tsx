@@ -10,8 +10,26 @@ import { assets } from "../helpers/AssetProvider";
 import Button from "../components/CommonComponets/Button";
 import { icons } from "../helpers/IconsProver";
 import Search from "../components/CommonComponets/Search";
+import {
+  MdOutlineKeyboardDoubleArrowLeft,
+  MdOutlineKeyboardDoubleArrowRight,
+} from "react-icons/md";
 
 const Shop = () => {
+  const { data, refetch, isPending, isError, error } = useGetAllProduct();
+  const { data: allProduct } = useGetAllProduct();
+  const [page, setpage] = useState<number>(1);
+  const [pagePerShow] = useState<number>(24);
+  let totalPage = data?.products?.length
+    ? Math.ceil(data.products.length / pagePerShow)
+    : 0;
+
+  //   pagination funtionality
+  const handlePerItem = (index: number) => {
+    if (index > 0 && index <= Math.ceil(totalPage)) {
+      setpage(index);
+    }
+  };
   const [value, setValue] = useState<[number, number]>([30, 60]);
   const [randomTagColor] = useState<string[]>([
     "primary-600",
@@ -26,19 +44,17 @@ const Shop = () => {
   ]);
   const [categoryOpen, setCategoryOpen] = useState<Boolean>(false);
 
-  const { data, refetch, isPending, isError, error } = useGetAllProduct();
-  const { data: allProduct } = useGetAllProduct();
   const {
     data: categoryData,
     // refetch: categoryRefetch,
     // isPending: catgoryIspending,
   } = useCategoryData();
-  console.log(allProduct, "allProduct");
+
   return (
     <div>
       <Breadcrumb />
       <Container>
-        <div className="grid grid-cols-[1fr_4fr] py-10! gap-x-4">
+        <div className="grid grid-cols-[1fr_4fr] py-10! gap-x-10">
           {/* left side */}
           <div>
             <div className="border-b-2 pb-6! border-b-gray-100">
@@ -378,13 +394,16 @@ const Shop = () => {
                   </div>
                 </div>
               </div>
-              <div className=" ">
+              <div className="">
                 <Product
                   status={{
                     fulldataLoad: true,
                     isPending,
                     isError,
-                    data,
+                    data: data?.products?.slice(
+                      page * 16 - 16, // 16
+                      page * pagePerShow // 32
+                    ),
                     error,
                     refetch: () => {
                       refetch();
@@ -392,6 +411,42 @@ const Shop = () => {
                   }}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        {/* pagination */}
+        <div className="py-10!">
+          <div className="flex items-center justify-center gap-x-6">
+            <div
+              onClick={() => handlePerItem(page - 1)}
+              className="w-10 text-2xl h-10 rounded-full border-2 border-gray-100 hover:bg-primary-600 cursor-pointer hover:text-gray-00  flex items-center justify-center"
+            >
+              <span>
+                <MdOutlineKeyboardDoubleArrowLeft />
+              </span>
+            </div>
+            <ul className="flex items-center gap-x-2">
+              {[...Array(totalPage).keys()].map((item) => (
+                <li
+                  key={item}
+                  className={
+                    item + 1 == page
+                      ? "w-10 h-10 rounded-full  hover:bg-gray-900  cursor-pointer bg-primary-500 text-gray-00 hover:text-gray-00 flex items-center justify-center"
+                      : "w-10 h-10 rounded-full  hover:bg-primary-600 border-2 border-gray-100 cursor-pointer hover:text-gray-00 flex items-center justify-center"
+                  }
+                  onClick={() => handlePerItem(item + 1)}
+                >
+                  {item + 1}
+                </li>
+              ))}
+            </ul>
+            <div
+              onClick={() => handlePerItem(page + 1)}
+              className="w-10 h-10 text-2xl rounded-full border-2 border-gray-100 hover:bg-primary-600 cursor-pointer hover:text-gray-00 flex items-center justify-center"
+            >
+              <span>
+                <MdOutlineKeyboardDoubleArrowRight />
+              </span>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { Discount } from "../../helpers/Discount";
 import { motion } from "motion/react";
 import Star from "./Star";
 import FeatureProductError from "../../Error/FeatrureProductError";
+import { log } from "console";
 
 type featureProductProp = {
   status: {
@@ -31,13 +32,13 @@ const Product: React.FC<featureProductProp> = ({ status }) => {
   return (
     <div className="h-full grid grid-cols-4 gap-4">
       {status.fulldataLoad
-        ? status?.data?.products?.map((item: productDataType) => (
+        ? status?.data?.map((item: productDataType) => (
             <div className="max-w-[300px] p-4!  border border-gray-100 rounded relative shadow">
               <div className="flex overflow-hidden items-center justify-center relative">
                 <img
                   src={item.images[0] || assets.mobile}
                   alt="mobil"
-                  className="max-w-[202px] max-h-[172px]  object-cover"
+                  className="max-w-[202px] max-h-[190px]  object-cover"
                 />
                 <motion.div
                   initial={{ opacity: 0 }}
