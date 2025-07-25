@@ -114,6 +114,7 @@ const FeaturesProduct: React.FC = () => {
               status={
                 selectedCategory === "all"
                   ? {
+                      fulldataLoad: false,
                       isPending,
                       isError,
                       data: {
@@ -123,6 +124,7 @@ const FeaturesProduct: React.FC = () => {
                       refetch,
                     }
                   : {
+                      fulldataLoad: false,
                       isPending: categoryPending,
                       isError: categoryError,
                       data: {

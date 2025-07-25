@@ -14,23 +14,21 @@ import {
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { categoryWiseData } from "../api/Category";
+import { useQuery } from "@tanstack/react-query";
 
 const Shop = () => {
+  const [value, setValue] = useState<[number, number]>([30, 60]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const { data: categoryData } = useCategoryData();
+  // category wise product
+  const { data: categoryProduct, isPending: categoryPending } = useQuery({
+    queryKey: ["categoryWiseProduct", selectedCategory],
+    queryFn: () => categoryWiseData(selectedCategory),
+    enabled: !!selectedCategory,
+  });
   const { data, refetch, isPending, isError, error } = useGetAllProduct();
   const { data: allProduct } = useGetAllProduct();
-  const [page, setpage] = useState<number>(1);
-  const [pagePerShow] = useState<number>(24);
-  let totalPage = data?.products?.length
-    ? Math.ceil(data.products.length / pagePerShow)
-    : 0;
-
-  //   pagination funtionality
-  const handlePerItem = (index: number) => {
-    if (index > 0 && index <= Math.ceil(totalPage)) {
-      setpage(index);
-    }
-  };
-  const [value, setValue] = useState<[number, number]>([30, 60]);
   const [randomTagColor] = useState<string[]>([
     "primary-600",
     "primary-500",
@@ -43,12 +41,22 @@ const Shop = () => {
     "danger-300",
   ]);
   const [categoryOpen, setCategoryOpen] = useState<Boolean>(false);
+  const [page, setpage] = useState<number>(1);
+  const [pagePerShow] = useState<number>(24);
+  let totalPage = data?.products?.length
+    ? Math.ceil(data.products.length / pagePerShow)
+    : 0;
 
-  const {
-    data: categoryData,
-    // refetch: categoryRefetch,
-    // isPending: catgoryIspending,
-  } = useCategoryData();
+  //   pagination funtionality
+  const handlePerItem = (index: number) => {
+    if (index > 0 && index <= Math.ceil(totalPage)) {
+      setpage(index);
+    }
+  };
+
+  const handleCategory = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+  };
 
   return (
     <div>
@@ -63,6 +71,7 @@ const Shop = () => {
                 <ul className="flex flex-col gap-y-2">
                   {categoryData?.map((item: string, index: number) => (
                     <div
+                      onClick={() => handleCategory(item)}
                       className="flex items-center gap-x-2 mt-2!"
                       key={index}
                     >
@@ -398,12 +407,18 @@ const Shop = () => {
                 <Product
                   status={{
                     fulldataLoad: true,
-                    isPending,
+                    isPending: selectedCategory ? categoryPending : isPending,
                     isError,
-                    data: data?.products?.slice(
-                      page * 16 - 16, // 16
-                      page * pagePerShow // 32
-                    ),
+                    data:
+                      selectedCategory === ""
+                        ? data?.products?.slice(
+                            page * 16 - 16, // 16
+                            page * pagePerShow // 32
+                          )
+                        : categoryProduct?.products?.slice(
+                            page * 16 - 16, // 16
+                            page * pagePerShow // 32
+                          ),
                     error,
                     refetch: () => {
                       refetch();
