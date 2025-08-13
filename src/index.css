@@ -455,7 +455,6 @@ a {
   transform: scaleX(1);
 }
 
-
 /* custom thumb and scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -465,8 +464,7 @@ a {
 /* Track */
 ::-webkit-scrollbar-track {
   background: var(--color-gray-300);
-    border-radius: 19px;
-   
+  border-radius: 19px;
 }
 
 /* Handle */
@@ -480,14 +478,11 @@ a {
   background: var(--color-orange-400);
 }
 
-
 /* range custom css */
 /* Yellow Range Slider */
 
 .range-slider {
-  
-    height: 4px;
-
+  height: 4px;
 }
 
 #range-slider-yellow {
@@ -501,18 +496,18 @@ a {
 }
 
 #range-slider-yellow .range-slider__thumb {
- background: var(--color-orange-400);
+  background: var(--color-orange-400);
   transition: transform 0.3s;
 }
 
 .range-slider .range-slider__thumb {
-    width: 13px;
-    height: 13px;
-    background: var(--color-gray-00)!important;
-    border: 2px solid var(--color-orange-400);
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+  width: 13px;
+  height: 13px;
+  background: var(--color-gray-00) !important;
+  border: 2px solid var(--color-orange-400);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 #range-slider-yellow .range-slider__thumb[data-active] {
@@ -523,13 +518,16 @@ a {
   height: 16px;
 }
 
-
 /* checkbox custom background  */
 
 input[type="checkbox"] {
-  accent-color: var(--color-orange-400); 
+  accent-color: var(--color-orange-400);
   width: 20px;
   height: 20px;
   border-radius: 2%;
 }
 
+/* maginifing glass */
+.iiz__hint {
+  display: none !important;
+}

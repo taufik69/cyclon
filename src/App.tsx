@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/CommonComponets/ErrorFallback";
 import React, { Suspense } from "react";
+import ProductDeatils from "./pages/ProductDeatils";
 const Layout = React.lazy(() => import("./components/CommonComponets/Layout"));
 const Shop = React.lazy(() => import("./pages/Shop"));
 const Home = React.lazy(() => import("./pages/Home"));
@@ -41,6 +42,16 @@ const App = () => {
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Suspense fallback={<h1>Loading...</h1>}>
                     <Shop />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/product/:id"
+              element={
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Suspense fallback={<h1>Loading...</h1>}>
+                    <ProductDeatils />
                   </Suspense>
                 </ErrorBoundary>
               }

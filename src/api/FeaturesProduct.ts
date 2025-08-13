@@ -1,4 +1,5 @@
 import type { fullApiType } from "../types/productapidata";
+
 export const GetFeaturesProduct = async (): Promise<fullApiType> => {
   try {
     const data = await fetch("https://dummyjson.com/products").then((res) =>
