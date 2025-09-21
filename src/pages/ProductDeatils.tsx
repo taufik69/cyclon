@@ -229,6 +229,7 @@ const ProductDeatils: React.FC = () => {
                 </div>
               </div>
             </div>
+            {/* tabs */}
           </div>
         </div>
       </Container>
